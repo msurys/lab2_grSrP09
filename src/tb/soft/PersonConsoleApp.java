@@ -67,7 +67,7 @@ public class PersonConsoleApp {
 	 */
 	public void runMainLoop() {
 
-		Set<Person> zbior = new HashSet<>();
+		Kolekcje kolekcje = new Kolekcje();
 		UI.printMessage(GREETING_MESSAGE);
 
 		while (true) {
@@ -93,8 +93,10 @@ public class PersonConsoleApp {
 				case 4: {
 					// odczyt danych z pliku tekstowego.
 					//String file_name = UI.enterString("Podaj nazwę pliku: ");
-					currentPerson = Person.readFromFile("C:\\Users\\mateu\\Documents\\Java\\lab2_grSrP09\\src\\tb\\dane.txt");
-					UI.printInfoMessage("Dane aktualnej osoby zostały wczytane z pliku " );
+					currentPerson = Person.readFromFile("src\\dane.csv",60);
+					UI.printInfoMessage("Dane aktualnej osoby zostały wczytane z pliku dane.csv");
+					kolekcje.dodawanie(currentPerson, currentPerson.getLastName());
+
 				}
 					break;
 				case 5: {
@@ -102,9 +104,24 @@ public class PersonConsoleApp {
 					String file_name = UI.enterString("Podaj nazwę pliku: ");
 					Person.printToFile(file_name, currentPerson);
 					UI.printInfoMessage("Dane aktualnej osoby zostały zapisane do pliku " + file_name);
-				}
+				}break;
+					case 6:{
+						for(int i=0;i< kolekcje.liczba_osob_w_danych;i++){
+							currentPerson = Person.readFromFile("src\\dane.csv",4*i);
+							kolekcje.dodawanie(currentPerson, currentPerson.getLastName());
+							if(i==3)currentPerson = Person.readFromFile("src\\dane.csv",4*i);
+						}
+						UI.printInfoMessage("Pomyślnie wczytano wszystkie osoby");
 
+						System.out.println(kolekcje.hs +"\n"+kolekcje.hs.size());
+						System.out.println(kolekcje.ts+"\n"+kolekcje.ts.size());
+						System.out.println(kolekcje.al+"\n"+kolekcje.al.size());
+						System.out.println(kolekcje.hm+"\n"+kolekcje.hm.size());
+						System.out.println(kolekcje.tm+"\n"+kolekcje.tm.size());
+					}
 					break;
+
+
 				case 0:
 					// zakończenie działania programu
 					UI.printInfoMessage("\nProgram zakończył działanie!");
