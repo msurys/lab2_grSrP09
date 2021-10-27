@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Objects;
 
 
 /*
@@ -86,14 +87,28 @@ public class Person {
 	private int birthYear;
 	private PersonJob job;
  
-	
+	//przedefiniowac fcje equals i zobaczyc co sie stanie
+	//hash code tak samo
+
 	public Person(String first_name, String last_name) throws PersonException {
 		setFirstName(first_name);
 		setLastName(last_name);
 		job = PersonJob.UNKNOWN;
 	}
 
-	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Person person = (Person) o;
+		return getBirthYear() == person.getBirthYear() && getFirstName().equals(person.getFirstName()) && getLastName().equals(person.getLastName());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getFirstName(), getLastName(), getBirthYear());
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}

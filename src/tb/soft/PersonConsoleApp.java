@@ -1,6 +1,8 @@
 package tb.soft;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Program: Aplikacja działająca w oknie konsoli, która umożliwia testowanie 
@@ -64,6 +66,8 @@ public class PersonConsoleApp {
 	 *         działania za pomocą metody System.exit(0); 
 	 */
 	public void runMainLoop() {
+
+		Set<Person> zbior = new HashSet<>();
 		UI.printMessage(GREETING_MESSAGE);
 
 		while (true) {
