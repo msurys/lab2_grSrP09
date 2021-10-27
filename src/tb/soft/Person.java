@@ -207,7 +207,7 @@ public class Person {
 	public static Person readFromFile(BufferedReader reader) throws PersonException{
 		try {
 			String line = reader.readLine();
-			String[] txt = line.split("#");
+			String[] txt = line.split(",");
 			Person person = new Person(txt[0], txt[1]);
 			person.setBirthYear(txt[2]);
 			person.setJob(txt[3]);	

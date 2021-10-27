@@ -92,9 +92,9 @@ public class PersonConsoleApp {
 					break;
 				case 4: {
 					// odczyt danych z pliku tekstowego.
-					String file_name = UI.enterString("Podaj nazwę pliku: ");
-					currentPerson = Person.readFromFile(file_name);
-					UI.printInfoMessage("Dane aktualnej osoby zostały wczytane z pliku " + file_name);
+					//String file_name = UI.enterString("Podaj nazwę pliku: ");
+					currentPerson = Person.readFromFile("C:\\Users\\mateu\\Documents\\Java\\lab2_grSrP09\\src\\tb\\dane.txt");
+					UI.printInfoMessage("Dane aktualnej osoby zostały wczytane z pliku " );
 				}
 					break;
 				case 5: {
