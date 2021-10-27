@@ -24,8 +24,10 @@ public class PersonConsoleApp {
 			"1 - Podaj dane nowej osoby \n" +
 			"2 - Usuń dane osoby        \n" +
 			"3 - Modyfikuj dane osoby   \n" +
-			"4 - Wczytaj dane z pliku   \n" +
+			"4 - Wczytaj dane z wybranego pliku \n" +
 			"5 - Zapisz dane do pliku   \n" +
+			"6 - Wczytaj dane z pliku dane.csv\n" +
+			"7 - Wypisz wszystkie dane z wszystkich kolekcji \n" +
 			"0 - Zakończ program        \n";	
 	
 	private static final String CHANGE_MENU = 
@@ -79,6 +81,7 @@ public class PersonConsoleApp {
 				case 1:
 					// utworzenie nowej osoby
 					currentPerson = createNewPerson();
+					kolekcje.dodawanie(currentPerson, currentPerson.getLastName());
 					break;
 				case 2:
 					// usunięcie danych aktualnej osoby.
@@ -106,34 +109,31 @@ public class PersonConsoleApp {
 					UI.printInfoMessage("Dane aktualnej osoby zostały zapisane do pliku " + file_name);
 				}break;
 					case 6:{
-						for(int i=0;i< kolekcje.liczba_osob_w_danych;i++){
+						for(int i=0;i< kolekcje.liczba_osob_w_danych;i++){//pętla dodająca wszystkie osoby z dane.csv do różnych kolekcji
 							currentPerson = Person.readFromFile("src\\dane.csv",4*i);
 							kolekcje.dodawanie(currentPerson, currentPerson.getLastName());
-							if(i==3)currentPerson = Person.readFromFile("src\\dane.csv",4*i);
+							if(i==3)kolekcje.dodawanie(currentPerson, currentPerson.getLastName());//próba dodania 2 razy tego samego obiektu do kolekcji
 						}
 						UI.printInfoMessage("Pomyślnie wczytano wszystkie osoby");
-
-						System.out.println(kolekcje.hs +"\n"+kolekcje.hs.size());
-						System.out.println(kolekcje.ts+"\n"+kolekcje.ts.size());
-						System.out.println(kolekcje.al+"\n"+kolekcje.al.size());
-						System.out.println(kolekcje.hm+"\n"+kolekcje.hm.size());
-						System.out.println(kolekcje.tm+"\n"+kolekcje.tm.size());
 					}
 					break;
-
+					case 7:{
+						kolekcje.printall();
+					}break;
 
 				case 0:
 					// zakończenie działania programu
 					UI.printInfoMessage("\nProgram zakończył działanie!");
 					System.exit(0);
 				} // koniec instrukcji switch
-			} catch (PersonException e) { 
+			} catch (PersonException e) {
 				// Tu są wychwytywane wyjątki zgłaszane przez metody klasy Person,
 				// gdy nie są spełnione ograniczenia nałożone na dopuszczalne wartości
 				// poszczególnych atrybutów.
 				// Drukowanie komunikatu o błędzie zgłoszonym za pomocą wyjątku PersonException.
 				UI.printErrorMessage(e.getMessage());
 			}
+
 		} // koniec pętli while
 	}
 	
@@ -146,8 +146,7 @@ public class PersonConsoleApp {
 		showPerson(currentPerson);
 	} 
 
-	
-	/* 
+	/*
 	 * Metoda wyświetla w oknie konsoli dane osoby reprezentowanej 
 	 * przez obiekt klasy Person
 	 */ 
