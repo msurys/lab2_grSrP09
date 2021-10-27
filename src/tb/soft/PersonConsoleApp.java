@@ -8,16 +8,13 @@ import java.util.Set;
  * Program: Aplikacja działająca w oknie konsoli, która umożliwia testowanie 
  *          operacji wykonywanych na obiektach klasy Person.
  *    Plik: PersonConsoleApp.java
- *          
- *   Autor: Paweł Rogaliński
- *    Data: październik 2018 r.
  */
 public class PersonConsoleApp {
 
 	private static final String GREETING_MESSAGE = 
 			"Program Person - wersja konsolowa\n" + 
-	        "Autor: Paweł Rogaliński\n" +
-			"Data:  październik 2018 r.\n";
+	        "Autor: Mateusz Suryś, na podstawie https://github.com/PWr-JP/kolekcje.git\n" +
+			"Data:  październik 2021 r.\n";
 
 	private static final String MENU = 
 			"    M E N U   G Ł Ó W N E  \n" +
@@ -113,21 +110,26 @@ public class PersonConsoleApp {
 					Person.printToFile(file_name, currentPerson);
 					UI.printInfoMessage("Dane aktualnej osoby zostały zapisane do pliku " + file_name);
 				}break;
-					case 7:{
-						for(int i=0;i< kolekcje.liczba_osob_w_danych;i++){//pętla dodająca wszystkie osoby z dane.csv do różnych kolekcji
+
+				case 7:{
+					for(int i=0;i< kolekcje.liczba_osob_w_danych;i++){//pętla dodająca wszystkie osoby z dane.csv do różnych kolekcji
 							currentPerson = Person.readFromFile("src\\dane.csv",4*i);
 							kolekcje.dodawanie(currentPerson);
 							if(i==3){
 								kolekcje.dodawanie(currentPerson);
 							}//próba dodania 2 razy tego samego obiektu do kolekcji
-						}
+					}
 						UI.printInfoMessage("Pomyślnie wczytano wszystkie osoby");
 					}
 					break;
 
-					case 8:{
-						kolekcje.printall();
-					}break;
+				case 8:{
+					kolekcje.printall();
+				}break;
+
+				case 9:
+
+				break;
 
 				case 0:
 					// zakończenie działania programu
