@@ -22,12 +22,13 @@ public class PersonConsoleApp {
 	private static final String MENU = 
 			"    M E N U   G Ł Ó W N E  \n" +
 			"1 - Podaj dane nowej osoby \n" +
-			"2 - Usuń dane osoby        \n" +
-			"3 - Modyfikuj dane osoby   \n" +
-			"4 - Wczytaj dane z wybranego pliku \n" +
-			"5 - Zapisz dane do pliku   \n" +
-			"6 - Wczytaj dane z pliku dane.csv\n" +
-			"7 - Wypisz wszystkie dane z wszystkich kolekcji \n" +
+			"2 - Wpisanie danych podanej osoby do wszystkich kolekcji \n" +
+			"3 - Usuń dane osoby        \n" +
+			"4 - Modyfikuj dane osoby   \n" +
+			"5 - Wczytaj dane z wybranego pliku \n" +
+			"6 - Zapisz dane do pliku   \n" +
+			"7 - Wczytaj dane z pliku dane.csv\n" +
+			"8 - Wypisz wszystkie dane z wszystkich kolekcji \n" +
 			"0 - Zakończ program        \n";	
 	
 	private static final String CHANGE_MENU = 
@@ -81,43 +82,50 @@ public class PersonConsoleApp {
 				case 1:
 					// utworzenie nowej osoby
 					currentPerson = createNewPerson();
-					kolekcje.dodawanie(currentPerson, currentPerson.getLastName());
 					break;
 				case 2:
+						//dodawanie utworzonej osoby do listy
+					if(currentPerson==null)UI.printMessage("Nie podałeś danych osoby");
+						kolekcje.dodawanie(currentPerson);
+					break;
+				case 3:
 					// usunięcie danych aktualnej osoby.
 					currentPerson = null;
 					UI.printInfoMessage("Dane aktualnej osoby zostały usunięte");
 					break;
-				case 3:
+				case 4:
 					// zmiana danych dla aktualnej osoby
 					if (currentPerson == null) throw new PersonException("Żadna osoba nie została utworzona.");
 					changePersonData(currentPerson);
 					break;
-				case 4: {
+				case 5: {
 					// odczyt danych z pliku tekstowego.
 					//String file_name = UI.enterString("Podaj nazwę pliku: ");
 					currentPerson = Person.readFromFile("src\\dane.csv",60);
 					UI.printInfoMessage("Dane aktualnej osoby zostały wczytane z pliku dane.csv");
-					kolekcje.dodawanie(currentPerson, currentPerson.getLastName());
+					kolekcje.dodawanie(currentPerson);
 
 				}
 					break;
-				case 5: {
+				case 6: {
 					// zapis danych aktualnej osoby do pliku tekstowego 
 					String file_name = UI.enterString("Podaj nazwę pliku: ");
 					Person.printToFile(file_name, currentPerson);
 					UI.printInfoMessage("Dane aktualnej osoby zostały zapisane do pliku " + file_name);
 				}break;
-					case 6:{
+					case 7:{
 						for(int i=0;i< kolekcje.liczba_osob_w_danych;i++){//pętla dodająca wszystkie osoby z dane.csv do różnych kolekcji
 							currentPerson = Person.readFromFile("src\\dane.csv",4*i);
-							kolekcje.dodawanie(currentPerson, currentPerson.getLastName());
-							if(i==3)kolekcje.dodawanie(currentPerson, currentPerson.getLastName());//próba dodania 2 razy tego samego obiektu do kolekcji
+							kolekcje.dodawanie(currentPerson);
+							if(i==3){
+								kolekcje.dodawanie(currentPerson);
+							}//próba dodania 2 razy tego samego obiektu do kolekcji
 						}
 						UI.printInfoMessage("Pomyślnie wczytano wszystkie osoby");
 					}
 					break;
-					case 7:{
+
+					case 8:{
 						kolekcje.printall();
 					}break;
 
