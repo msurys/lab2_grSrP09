@@ -76,7 +76,7 @@ public class Person implements Comparable<Person>{
 	private int birthYear;
 	private PersonJob job;
  
-//nadpisanie metod equals i hashCode pozwala na porównywanie ich dla kolekcji, dzięki temu możemy je w łatwy sposób usunąć porównując obiekty, na podstawie ich danych
+	//nadpisanie metod equals i hashCode pozwala na porównywanie ich dla kolekcji, dzięki temu możemy je w łatwy sposób usunąć porównując obiekty, na podstawie ich danych
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -89,6 +89,8 @@ public class Person implements Comparable<Person>{
 	public int hashCode() {
 		return Objects.hash(getFirstName(), getLastName(), getBirthYear());
 	}
+	//nadpisane metody CompareTo pozwalające na usuwanie elementów z map
+
 	@Override
 	public int compareTo(Person o) {
 		if(this.lastName.equals(o.getLastName())
@@ -221,7 +223,7 @@ public class Person implements Comparable<Person>{
 			throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
 		}
 	}
-	
+
 
 	public static Person readFromFile(String file_name) throws PersonException {
 		try (BufferedReader reader = new BufferedReader(new FileReader(new File(file_name)))) {

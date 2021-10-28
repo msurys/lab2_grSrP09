@@ -18,5 +18,5 @@ w celu sprawdzenia jak zachowują się dane tablice.
 Reagowały w poprawny dla nich sposób, dla dodawania i usuwania osob, iteracje przez wszystkie elementy
 (wypisanie).
 
-Przedefiniowanie metod equals() oraz hashCode() umożliwiło porównywanie elementów w celu ich usunięcia
-bez tych zmian program nie usuwał poprawnie elementów z listy.
+Przedefiniowanie metod equals() oraz hashCode() umożliwiło porównywanie elementów co uniemożliwia dodoanie do niektórych
+kolekcji dodania tej samej osoby 2 razy, a bez tych zmian program nie usuwał poprawnie elementów z listy.
