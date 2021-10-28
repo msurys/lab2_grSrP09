@@ -60,28 +60,28 @@ public class Kolekcje{
         tmPrint();System.out.println("[LICZBA ELEMENTÓW TreeMap: "+tm.size()+"]\n");
     }
 
-    void hsPrint() {
+    private void hsPrint() {
         for (Person x: hs) {System.out.println(x.getFirstName()+" "+x.getLastName()+" "+x.getBirthYear()+" "+x.getJob());
         }
     }
-    void tsPrint() {
+    private void tsPrint() {
         for (Person x: ts) {System.out.println(x.getFirstName()+" "+x.getLastName()+" "+x.getBirthYear()+" "+x.getJob());
         }
     }
-    void alPrint() {
+    private void alPrint() {
         for (Person x: al) {System.out.println(x.getFirstName()+" "+x.getLastName()+" "+x.getBirthYear()+" "+x.getJob());
         }
     }
-    void llPrint() {
+    private void llPrint() {
         for (Person x: ll) {System.out.println(x.getFirstName()+" "+x.getLastName()+" "+x.getBirthYear()+" "+x.getJob());
         }
     }
-    void hmPrint() {
+    private void hmPrint() {
         for (Map.Entry<Person,String> entry : hm.entrySet()) {
             System.out.println(entry.getKey()+" "+entry.getKey().getBirthYear()+" "+entry.getKey().getJob()+"/" + entry.getValue());
         }
     }
-    void tmPrint(){
+    private void tmPrint(){
         for (Map.Entry<String, Person> entry : tm.entrySet()) {
             System.out.println(entry.getKey() + "/" + entry.getValue()+" "+
                     entry.getValue().getBirthYear()+" "+entry.getValue().getJob());
