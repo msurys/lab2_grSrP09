@@ -32,6 +32,7 @@ public class Kolekcje{
 
     TreeMap<String,Person> tm = new TreeMap<>(); //tworzenie TreeMap
 
+
     void dodawanie(Person person){//funkcja pozwalająca na dodanie obiektu do wszystkich omawianych rodzajów kolekcji
         hs.add(person);
         ts.add(person);
@@ -40,6 +41,7 @@ public class Kolekcje{
         hm.put(person,person.getLastName());
         tm.put(person.getLastName(),person);
         }
+
     void usuwanie(Person person){//funkcja pozwala na usunięcie wybranego przez nas elementu kolekcji
         hs.remove(person);
         ts.remove(person);

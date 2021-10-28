@@ -76,7 +76,7 @@ public class Person implements Comparable<Person>{
 	private int birthYear;
 	private PersonJob job;
  
-//nadpisanie metod equals i hashCode pozwala na porównywanie ich dla kolekcji TreeeMap i TreeSet, dzięki temu możemy je w łatwy sposób usunąć porównując obiekty, na podstawie ich danych
+//nadpisanie metod equals i hashCode pozwala na porównywanie ich dla kolekcji, dzięki temu możemy je w łatwy sposób usunąć porównując obiekty, na podstawie ich danych
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -96,7 +96,6 @@ public class Person implements Comparable<Person>{
 		&& this.birthYear==o.getBirthYear())return 0;
 		else return -1;
 	}
-
 	public Person(String first_name, String last_name) throws PersonException {
 		setFirstName(first_name);
 		setLastName(last_name);
@@ -209,7 +208,7 @@ public class Person implements Comparable<Person>{
 			throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
 		}	
 	}
-/**przeciążona funkcja readFromFile dostosowana do wczytywania wielu osób*/
+/*przeciążona funkcja readFromFile dostosowana do wczytywania wielu osób*/
 	public static Person readFromFile(BufferedReader reader, int pos) throws PersonException{
 		try {
 			String line = reader.readLine();
@@ -233,7 +232,7 @@ public class Person implements Comparable<Person>{
 			throw new PersonException("Wystąpił błąd podczas odczytu danych z pliku.");
 		}
 	}
-	/**przeciążona funkcja readFromFile dostosowana do wczytywania wielu osób*/
+	/*przeciążona funkcja readFromFile dostosowana do wczytywania wielu osób*/
 	public static Person readFromFile(String file_name, int pos) throws PersonException {
 		try (BufferedReader reader = new BufferedReader(new FileReader(new File(file_name)))) {
 			return Person.readFromFile(reader,pos);
@@ -245,26 +244,3 @@ public class Person implements Comparable<Person>{
 	}
 
 }  // koniec klasy Person
-/*
-class PersonOverride extends Person{ //klasa z nadpisanymi metodami equals i hashCode
-
-	public PersonOverride(String first_name, String last_name) throws PersonException {
-		super(first_name, last_name);
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Person person = (Person) o;
-		return getBirthYear() == person.getBirthYear() && getFirstName().equals(person.getFirstName()) && getLastName().equals(person.getLastName());
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(getFirstName(), getLastName(), getBirthYear());
-	}
-
-}
-
- */
