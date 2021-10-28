@@ -1,13 +1,4 @@
 package tb.soft;
-/*
- * Program: Prosta biblioteka metod do realizacji dialogu z użytkownikiem
- *          w prostych aplikacjach bez graficznego interfejsu użytkownika.
- *    Plik: ConsoleUserDialog.java
- *          
- *   Autor: Paweł Rogaliński
- *    Data: październik 2018 r.
- *
- */
 
 import java.util.Scanner;
 
@@ -15,7 +6,8 @@ import java.util.Scanner;
  * Biblioteka metod do realizacji dialogu z użytkownikiem
  * w prostych aplikacjach bez graficznego interfejsu użytkownika.
  *
- * @author Paweł Rogaliński
+ * @author Mateusz Suryś
+ * na podstawie https://github.com/PWr-JP/kolekcje.git
  *
  */
 public class ConsoleUserDialog {

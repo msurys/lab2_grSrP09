@@ -9,7 +9,6 @@ public class Kolekcje{
     plik csv zawiera 9 osob + jedno powtorzenie na pierwszej pozycji, pozwala to na sprawdzenie jak
     będą działały różne kolekcje dla osób o tych samych danych.
     Próba dodania 2x tego samego obiektu do kolekcji znajduje się w case 7 w PersonConsoleApp.java
-
      */
 
     HashSet<Person> hs = new HashSet<>(); //tworzenie hashsetu

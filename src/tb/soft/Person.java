@@ -69,7 +69,7 @@ class PersonException extends Exception {
  * niedozwolonej wartości, któremuś z atrybutów jest zgłaszany wyjątek
  * zawierający stosowny komunikat.
  */
-public class Person implements Comparable<Person>{
+public class Person{
 	
 	private String firstName;
 	private String lastName;
@@ -84,20 +84,13 @@ public class Person implements Comparable<Person>{
 		Person person = (Person) o;
 		return getBirthYear() == person.getBirthYear() && getFirstName().equals(person.getFirstName()) && getLastName().equals(person.getLastName());
 	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(getFirstName(), getLastName(), getBirthYear());
 	}
 	//nadpisane metody CompareTo pozwalające na usuwanie elementów z map
 
-	@Override
-	public int compareTo(Person o) {
-		if(this.lastName.equals(o.getLastName())
-		&& this.firstName.equals(o.getFirstName())
-		&& this.birthYear==o.getBirthYear())return 0;
-		else return -1;
-	}
+
 	public Person(String first_name, String last_name) throws PersonException {
 		setFirstName(first_name);
 		setLastName(last_name);

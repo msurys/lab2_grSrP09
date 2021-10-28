@@ -77,25 +77,29 @@ public class PersonConsoleApp {
 
 			try {
 				switch (UI.enterInt(MENU + "==>> ")) {
-				case 1:
+				case 1: {
 					// utworzenie nowej osoby
 					currentPerson = createNewPerson();
-					break;
-				case 2:
-						//dodawanie utworzonej osoby do listy
-					if(currentPerson==null)UI.printMessage("Nie podałeś danych osoby");
-						kolekcje.dodawanie(currentPerson);
-					break;
-				case 3:
+				}break;
+
+				case 2: {
+					//dodawanie utworzonej osoby do listy
+					if (currentPerson == null) UI.printMessage("Nie podałeś danych osoby");
+					kolekcje.dodawanie(currentPerson);
+				}break;
+
+				case 3:{
 					// usunięcie danych aktualnej osoby.
 					currentPerson = null;
 					UI.printInfoMessage("Dane aktualnej osoby zostały usunięte");
-					break;
-				case 4:
+				}break;
+
+				case 4: {
 					// zmiana danych dla aktualnej osoby
 					if (currentPerson == null) throw new PersonException("Żadna osoba nie została utworzona.");
 					changePersonData(currentPerson);
-					break;
+				}break;
+
 				case 5: {
 					// odczyt danych z pliku tekstowego.
 					//String file_name = UI.enterString("Podaj nazwę pliku: ");
@@ -103,8 +107,8 @@ public class PersonConsoleApp {
 					UI.printInfoMessage("Dane aktualnej osoby zostały wczytane z pliku dane.csv");
 					kolekcje.dodawanie(currentPerson);
 
-				}
-					break;
+				}break;
+
 				case 6: {
 					// zapis danych aktualnej osoby do pliku tekstowego 
 					String file_name = UI.enterString("Podaj nazwę pliku: ");
@@ -121,8 +125,7 @@ public class PersonConsoleApp {
 							}//próba dodania 2 razy tego samego obiektu do kolekcji
 					}
 						UI.printInfoMessage("Pomyślnie wczytano wszystkie osoby");
-					}
-					break;
+				}break;
 
 				case 8:{
 					kolekcje.printall();
@@ -130,7 +133,6 @@ public class PersonConsoleApp {
 
 				case 9://usuwanie osoby o wymienionych danych
 					kolekcje.usuwanie(currentPerson);
-
 				break;
 
 				case 0:
