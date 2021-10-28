@@ -76,7 +76,11 @@ public class Person{
 	private int birthYear;
 	private PersonJob job;
  
-	//nadpisanie metod equals i hashCode pozwala na porównywanie ich dla kolekcji, dzięki temu możemy je w łatwy sposób usunąć porównując obiekty, na podstawie ich danych
+	/*
+	nadpisanie metod equals i hashCode pozwala na porównywanie ich dla kolekcji,
+	dzięki temu możemy w łatwy sposób usunąć porównując je na podstawie ich danych,
+	uniemożliwia to wpisanie obiektu o tych samych danych dla niektórych kolekcji
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -88,8 +92,6 @@ public class Person{
 	public int hashCode() {
 		return Objects.hash(getFirstName(), getLastName(), getBirthYear());
 	}
-	//nadpisane metody CompareTo pozwalające na usuwanie elementów z map
-
 
 	public Person(String first_name, String last_name) throws PersonException {
 		setFirstName(first_name);
