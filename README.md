@@ -1,7 +1,7 @@
 Kolekcje
 
-Prerobiłem repozytorium startowe w sposob pozwalający na szybkie sprawdzenie 6 zadanych tablic
-Po uruchomieniu programu mamy możliwość wyboru w menu, w którym dodałem 4 następujące opcje:
+Przerobiłem repozytorium startowe w sposob pozwalający na szybkie sprawdzenie 6 zadanych tablic.
+Po uruchomieniu programu mamy możliwość wyboru w menu, w którym dodałem następujące opcje:
 
 1. Wpisanie danych podanej osoby do wszystkich kolekcji (case2)
 2. Wczytaj dane z pliku dane.csv (case7)
@@ -18,5 +18,5 @@ w celu sprawdzenia jak zachowują się dane tablice.
 Reagowały w poprawny dla nich sposób, dla dodawania i usuwania osob, iteracje przez wszystkie elementy
 (wypisanie).
 
-Przedefiniowanie metod equals() oraz hashCode() umożliwiło porównywanie elementów co uniemożliwia dodoanie do niektórych
-kolekcji dodania tej samej osoby 2 razy, a bez tych zmian program nie usuwał poprawnie elementów z listy.
+Przedefiniowanie metod equals() oraz hashCode() umożliwiło porównywanie elementów co uniemożliwia dodanie do niektórych
+kolekcji dodania tej samej osoby 2 razy, również bez tych zmian program nie usuwał poprawnie elementów z listy.
