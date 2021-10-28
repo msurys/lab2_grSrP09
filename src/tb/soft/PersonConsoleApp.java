@@ -68,6 +68,7 @@ public class PersonConsoleApp {
 	public void runMainLoop() {
 
 		Kolekcje kolekcje = new Kolekcje();
+		Kolekcje kolekcjeOverride = new Kolekcje();
 		UI.printMessage(GREETING_MESSAGE);
 
 		while (true) {
@@ -127,7 +128,8 @@ public class PersonConsoleApp {
 					kolekcje.printall();
 				}break;
 
-				case 9:
+				case 9://usuwanie osoby o wymienionych danych
+					kolekcje.usuwanie(currentPerson);
 
 				break;
 

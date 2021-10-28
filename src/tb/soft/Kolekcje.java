@@ -9,17 +9,21 @@ public class Kolekcje {
     plik csv zawiera 9 osob + jedno powtorzenie na pierwszej pozycji, pozwala to na sprawdzenie jak
     będą działały różne kolekcje dla osób o tych samych danych.
     Próba dodania 2x tego samego obiektu do kolekcji znajduje się w case 7 w PersonConsoleApp.java
+
      */
 
     HashSet<Person> hs = new HashSet<>(); //tworzenie hashsetu
                                                     //tworzenie treeset z przeciążoną funkcją compare dostosowaną do porównywania obiektów Person
-    TreeSet<Person> ts = new TreeSet<>((o1, o2) -> {//przyjąłem, że dane osoby roznia sie od siebie jak maja rozne imie nazwisko lub rok urodzenia
+    TreeSet<Person> ts = new TreeSet<>(new Comparator<Person>() {
+    @Override
+    public int compare(Person o1, Person o2) {
         if(o1.getLastName().equals(o2.getLastName())
                 && o1.getFirstName().equals(o2.getFirstName())
-                && o1.getBirthYear()==o2.getBirthYear())
-        return 0;
-        else return 1;
+                && o1.getBirthYear()==o2.getBirthYear())return 0;
+    else return 1;
+    }
     });
+
     ArrayList<Person> al = new ArrayList<>(); //tworzenie ArrayList
     LinkedList<Person> ll= new LinkedList<>(); // tworzenie LinkedList
     HashMap<String,Person> hm = new HashMap<>(); //tworzenie hassh map
@@ -34,13 +38,13 @@ public class Kolekcje {
         tm.put(person.getLastName(),person);
         }
     void usuwanie(Person person){//funkcja pozwala na usunięcie wybranego przez nas elementu kolekcji
-        /** sprawdzic !!!!!!!*/
+        /** !!!*/
         hs.remove(person);
         ts.remove(person);
         al.remove(person);
         ll.remove(person);
-        hm.remove(person);
-        tm.remove(person);
+        hm.remove(person.getLastName());
+        tm.remove(person.getLastName());
     }
 
     void printall(){//funkcja wywołująca iteracje dla każdej z kolekcji. Następnie drukuje ona wszystkie jej elementy
