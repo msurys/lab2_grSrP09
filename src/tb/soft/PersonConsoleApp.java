@@ -26,6 +26,7 @@ public class PersonConsoleApp {
 			"6 - Zapisz dane do pliku   \n" +
 			"7 - Wczytaj dane z pliku dane.csv\n" +
 			"8 - Wypisz wszystkie dane z wszystkich kolekcji \n" +
+			"9 - Usuwanie danych osoby z wszystkich kolekcji        \n" +
 			"0 - Zakończ program        \n";	
 	
 	private static final String CHANGE_MENU = 
@@ -68,7 +69,6 @@ public class PersonConsoleApp {
 	public void runMainLoop() {
 
 		Kolekcje kolekcje = new Kolekcje();
-		Kolekcje kolekcjeOverride = new Kolekcje();
 		UI.printMessage(GREETING_MESSAGE);
 
 		while (true) {

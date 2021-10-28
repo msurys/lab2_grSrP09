@@ -2,7 +2,7 @@ package tb.soft;
 
 import java.util.*;
 
-public class Kolekcje {
+public class Kolekcje{
     final int liczba_osob_w_danych = 10; //zmienna finalna jest równa liczbie osob w pliku csv
 
     /*
@@ -13,8 +13,8 @@ public class Kolekcje {
      */
 
     HashSet<Person> hs = new HashSet<>(); //tworzenie hashsetu
-                                                    //tworzenie treeset z przeciążoną funkcją compare dostosowaną do porównywania obiektów Person
-    TreeSet<Person> ts = new TreeSet<>(new Comparator<Person>() {
+
+    TreeSet<Person> ts = new TreeSet<>(new Comparator<Person>() { //tworzenie treeset z przeciążoną funkcją compare dostosowaną do porównywania obiektów Person
     @Override
     public int compare(Person o1, Person o2) {
         if(o1.getLastName().equals(o2.getLastName())
@@ -25,8 +25,11 @@ public class Kolekcje {
     });
 
     ArrayList<Person> al = new ArrayList<>(); //tworzenie ArrayList
+
     LinkedList<Person> ll= new LinkedList<>(); // tworzenie LinkedList
-    HashMap<String,Person> hm = new HashMap<>(); //tworzenie hassh map
+
+    HashMap<Person,String> hm = new HashMap<>(); //tworzenie hassh map
+
     TreeMap<String,Person> tm = new TreeMap<>(); //tworzenie TreeMap
 
     void dodawanie(Person person){//funkcja pozwalająca na dodanie obiektu do wszystkich omawianych rodzajów kolekcji
@@ -34,16 +37,15 @@ public class Kolekcje {
         ts.add(person);
         al.add(person);
         ll.add(person);
-        hm.put(person.getLastName(),person);
+        hm.put(person,person.getLastName());
         tm.put(person.getLastName(),person);
         }
     void usuwanie(Person person){//funkcja pozwala na usunięcie wybranego przez nas elementu kolekcji
-        /** !!!*/
         hs.remove(person);
         ts.remove(person);
         al.remove(person);
         ll.remove(person);
-        hm.remove(person.getLastName());
+        hm.remove(person);
         tm.remove(person.getLastName());
     }
 
@@ -73,13 +75,12 @@ public class Kolekcje {
         }
     }
     void hmPrint() {
-        for (Map.Entry<String, Person> entry : hm.entrySet()) {
-            System.out.println(entry.getKey() + "/" + entry.getValue()+" "
-                    +entry.getValue().getBirthYear()+" "+entry.getValue().getJob());
+        for (Map.Entry<Person,String> entry : hm.entrySet()) {
+            System.out.println(entry.getKey()+" "+entry.getKey().getBirthYear()+" "+entry.getKey().getJob()+"/" + entry.getValue());
         }
     }
     void tmPrint(){
-        for (Map.Entry<String, Person> entry : hm.entrySet()) {
+        for (Map.Entry<String, Person> entry : tm.entrySet()) {
             System.out.println(entry.getKey() + "/" + entry.getValue()+" "+
                     entry.getValue().getBirthYear()+" "+entry.getValue().getJob());
         }

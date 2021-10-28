@@ -10,18 +10,6 @@ import java.util.Comparator;
 import java.util.Objects;
 
 
-/*
- *  Program: Operacje na obiektach klasy Person
- *     Plik: Person.java
- *           definicja typu wyliczeniowego Job
- *           definicja klasy PersonException
- *           definicja publicznej klasy Person
- *
- *    Autor: Paweł Rogaliński
- *     Data:  październik 2018 r.
- */
-
-
 /**
  *  Typ wyliczeniowy PersonJob reprezentuje przykładowe stanowiska, 
  *  które może zajmować osoba. Klasa została zaimplementowana
@@ -81,7 +69,7 @@ class PersonException extends Exception {
  * niedozwolonej wartości, któremuś z atrybutów jest zgłaszany wyjątek
  * zawierający stosowny komunikat.
  */
-public class Person{
+public class Person implements Comparable<Person>{
 	
 	private String firstName;
 	private String lastName;
@@ -100,6 +88,13 @@ public class Person{
 	@Override
 	public int hashCode() {
 		return Objects.hash(getFirstName(), getLastName(), getBirthYear());
+	}
+	@Override
+	public int compareTo(Person o) {
+		if(this.lastName.equals(o.getLastName())
+		&& this.firstName.equals(o.getFirstName())
+		&& this.birthYear==o.getBirthYear())return 0;
+		else return -1;
 	}
 
 	public Person(String first_name, String last_name) throws PersonException {
